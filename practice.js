@@ -76,14 +76,17 @@ var ninetiesKid = function(movies) {
     }
     return total;
   }, []);
-  console.log(movieResult);
   return movieResult;
 };
 
-// return an boolean stating if there exists a movie with a shorter
-// runtime than your time limit.
-// timeLimit is an integer representing a number of minutes.
 var movieNight = function(movies, timeLimit) {
+  var runtimeResult = _.reduce(movies, function(total, movie) {
+    if (movie.runtime < timeLimit) {
+      total = true;
+    }
+    return total;
+  }, false);
+  return runtimeResult;
 };
 
 var upperCaseFruits = function(fruits) {
@@ -132,4 +135,15 @@ var glutenFree = function(desserts) {
 
 */
 var applyCoupon = function(groceries, coupon) {
+  var couponApplied = _.map(groceries, function(item, key) {
+    var price = parseFloat(groceries[key].price.slice(1));
+    price -= coupon;
+    var saleApplied = "$" + price;
+    if (!item.hasOwnProperty('salePrice')) {
+      item.salePrice = saleApplied;
+    }
+    return item;
+  });
+  console.log(couponApplied);
+  return couponApplied;
 };
