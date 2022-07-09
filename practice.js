@@ -114,26 +114,6 @@ var glutenFree = function(desserts) {
   return filteredForGluten;
 };
 
-// use _.map to return an array of items with their sale prices, with a new property
-// containing the sale price. round any decimals to 2 places.
-//
-// having trouble with decimals? check out this article:
-// http://adripofjavascript.com/blog/drips/avoiding-problems-with-decimal-math-in-javascript.html
-//
-/*
-
- example output:
-  var salePrices = applyCoupon(groceries, 0.20);
-  [
-    {
-      id: 1,
-      product: 'Olive Oil',
-      price: '$12.1',
-      salePrice: '$9.68'
-    }
-  ];
-
-*/
 var applyCoupon = function(groceries, coupon) {
   var couponApplied = _.map(groceries, function(item, key) {
     var price = parseFloat(groceries[key].price.slice(1));
